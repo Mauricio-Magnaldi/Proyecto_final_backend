@@ -1,0 +1,36 @@
+<h2>Bienvenido {{first_name}}</h2>
+{{#if products.length}}
+        <h3>Los productos disponibles son:</h3>
+        <table id="table">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Code</th>
+            <th>Price</th>
+            <th>Status</th>
+            <th>Stock</th>
+            <th>Category</th>
+            <th>Thumbnails</th>
+        </tr>
+    </thead>
+    <tbody id="tableBody">
+        {{#each products}}
+        <tr>
+            <td>{{title}}</td>
+            <td>{{description}}</td>
+            <td>{{code}}</td>
+            <td>{{price}}</td>     
+            <td>{{status}}</td>
+            <td>{{stock}}</td>
+            <td>{{category}}</td>
+            <td>{{thumbnails}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+{{else}}
+        <h3>Ningun producto para mostrar por el momento.</h3>
+{{/if}}
+
+<button onclick="location.href='/api/sessions/logout'">Logout</button>

@@ -1,0 +1,109 @@
+paths:
+
+  /api/products:
+    get:
+      tags: 
+        - Products
+      summary: Obtener todos los productos.
+      responses:
+        "200":
+          description: Todos los productos
+        "400":
+          description: Algunos datos se han perdido
+        "500":
+          description: Error del servidor
+ 
+  /api/products/{id}:
+    get:
+      tags: 
+        - Products
+      summary: Obtener un producto por id.
+      parameters: 
+        - name: id
+          in: path
+          description: Identificador del producto
+          schema:
+            type: string
+      responses:
+        '200':
+          description: El producto
+          content: 
+            application/json:
+              schemas:
+                $ref: "#/components/schemas/Product"
+
+    put:
+      tags: 
+        - Products
+      summary: Actualizar un producto por su id
+      parameters:
+        - name: id
+          in: path
+          description: Identificador del producto
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/requestBodies/updateProduct"
+
+components:
+  schemas:
+    Product:  
+      type: object
+      properties:
+        id:
+          type: string 
+        title: 
+          type: string
+        description:
+          type: string
+        code:
+          type: string
+        price:
+          type: number
+        status:
+          type: string
+        stock:  
+          type: number
+        category:
+          type: string
+        thumbnails:
+          type: string
+
+      example: 
+        id: 65309cbbb8547de570e0ff8e 
+        title: camisa
+        description: manga larga
+        code: cm
+        price: 398
+        status: buena
+        stock: 0
+        category: nueva
+        thumbnails: no tiene
+
+  requestBodies:
+    updateProduct:
+      type: object
+      required: true
+      properties: 
+        title: 
+          type: string
+        description:
+          type: string
+        code:
+          type: string
+        price:
+          type: number
+        status:
+          type: string
+        stock:  
+          type: number
+        category:
+          type: string
+        thumbnails:
+          type: string
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Product"

@@ -1,0 +1,17 @@
+<h2>Login</h2>
+<form action="/api/sessions/login" method="post">
+<div class="form-group">
+    <label>Email:</label>
+    <input type="email" name="email" id="email">
+</div>
+<div class="form-group"></div>
+    <label>Password</label>
+    <input type="password" name="password" id="password">
+</div>
+<div class="button">
+    <input type="submit" value="Enviar">
+</div>
+</form>
+<div class="button">
+    <button onclick="location.href='/api/sessions/auth/github'">GitHub</button>
+</div>
